@@ -25,20 +25,20 @@ def generator_one_item():
 
 
 def generator(number_items):
-    x_list = np.array([], dtype=float)
+    x_list = list()
     y_list = np.zeros(number_items, dtype=int)
     for i in range(number_items):
         x, y = generator_one_item()
-        np.append(x_list, x)
+        x_list.append(x)
         y_list[i] = y
 
-    return x_list, y_list
+    return np.array(x_list), y_list
 
 
 def main():
     x, y = generator(10)
-    #print(x)
-    print(y)
+    np.save("x_data.npy", x)
+    np.save("y_data.npy", y)
 
 
 if __name__ == "__main__":
